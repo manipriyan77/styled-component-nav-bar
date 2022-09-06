@@ -12,9 +12,14 @@ import {
   NavbarLinkExtended,
 } from "../Styles/Navbar.style";
 import logo from "../assets/Image/logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isTrue, setIsTrue] = useState(false);
+
+  const backgroundHideHandler = () => {
+    setIsTrue((prevState) => !prevState);
+  };
 
   return (
     <NavbarContainer isTrue={isTrue}>
@@ -25,21 +30,31 @@ const Navbar = () => {
             <NavbarLink to="/products">Products</NavbarLink>
             <NavbarLink to="/about">About</NavbarLink>
             <NavbarLink to="/contact">Contact</NavbarLink>
-            <OpenButon onClick={() => setIsTrue((prevState) => !prevState)}>
+            <OpenButon onClick={backgroundHideHandler}>
               {isTrue ? <>&#10005;</> : <>&#8801;</>}
             </OpenButon>
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <LogoImg src={logo} />
+          <Link to="/">
+            <LogoImg src={logo} />
+          </Link>
         </RightContainer>
       </NavbarInnerContainer>
       {isTrue && (
         <NavbarExtendedContainer>
-          <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
-          <NavbarLinkExtended to="/products">Products</NavbarLinkExtended>
-          <NavbarLinkExtended to="/about">About</NavbarLinkExtended>
-          <NavbarLinkExtended to="/contact">Contact</NavbarLinkExtended>
+          <NavbarLinkExtended to="/" onClick={backgroundHideHandler}>
+            Home
+          </NavbarLinkExtended>
+          <NavbarLinkExtended to="/products" onClick={backgroundHideHandler}>
+            Products
+          </NavbarLinkExtended>
+          <NavbarLinkExtended to="/about" onClick={backgroundHideHandler}>
+            About
+          </NavbarLinkExtended>
+          <NavbarLinkExtended to="/contact" onClick={backgroundHideHandler}>
+            Contact
+          </NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>

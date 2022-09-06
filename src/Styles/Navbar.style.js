@@ -12,6 +12,11 @@ export const NavbarContainer = styled.nav`
     height: 80px;
   }
 `;
+export const NavbarInnerContainer = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+`;
 
 export const LeftContainer = styled.div`
   flex: 70%;
@@ -25,12 +30,6 @@ export const RightContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 50px;
-`;
-
-export const NavbarInnerContainer = styled.div`
-  width: 100%;
-  height: 80px;
-  display: flex;
 `;
 
 export const NavbarLinkContainer = styled.div`
@@ -59,9 +58,13 @@ export const NavbarExtendedContainer = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  margin: 10px;
   max-width: 180px;
   height: auto;
+  margin: 10px;
+
+  @media (min-width: 700px) {
+    display: block;
+  }
 `;
 
 export const OpenButon = styled.button`
